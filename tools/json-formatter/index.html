@@ -1,1 +1,24 @@
-
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JSON Formatter &amp; Validator — TinyToolbox</title>
+<meta name="description" content="Format, minify and validate JSON online for free. Your JSON is processed locally in your browser and is not uploaded to a server.">
+<meta name="robots" content="index,follow"><link rel="canonical" href="https://tools.appforge.top/tools/json-formatter/">
+<link rel="stylesheet" href="/assets/style.css"><link rel="icon" href="/favicon.svg" type="image/svg+xml"></head>
+<body><header class="site-header"><div class="container nav-wrap"><a class="brand" href=" " aria-label="TinyToolbox home"><span class="brand-mark">T</span><span>TinyToolbox</span></a ><nav aria-label="Main navigation"><a href="/#tools">Tools</a ><a href="/about/">About</a ><a href="/contact/">Contact</a ></nav></div></header>
+<main class="page-main"><div class="container prose"><p class="eyebrow">DEVELOPER TOOLS</p ><h1 class="page-title">JSON Formatter &amp; Validator</h1><p class="lead">Format messy JSON, minify it for compact output, or validate its syntax. Processing happens in your browser; the input is not sent to our server.</p >
+<div class="tool-shell"><div class="tool-toolbar"><button class="primary" id="formatBtn" type="button">Format JSON</button><button id="minifyBtn" type="button">Minify</button><button id="validateBtn" type="button">Validate</button><button id="copyBtn" type="button">Copy output</button><button id="sampleBtn" type="button">Load example</button><button id="clearBtn" type="button">Clear</button></div><textarea id="jsonInput" class="json-input" spellcheck="false" aria-label="JSON input" placeholder='Paste JSON here, for example: {"hello":"world"}'></textarea><div id="status" class="tool-status" role="status" aria-live="polite">Paste JSON above, then choose Format, Minify, or Validate.</div></div>
+<p class="small-note">Privacy note: this tool uses your browser's built-in JSON parser. No account or upload is required.</p >
+<h2>How to use this JSON tool</h2><ol><li>Paste JSON into the editor.</li><li>Select <strong>Format JSON</strong> to indent it for readability, or <strong>Minify</strong> to remove unnecessary whitespace.</li><li>Select <strong>Validate</strong> to check whether the input is valid JSON.</li><li>Use <strong>Copy output</strong> to copy the current editor contents.</li></ol>
+</div></main><footer class="site-footer"><div class="container footer-inner"><span>© <span id="year">2026</span> TinyToolbox</span><div class="footer-links"><a href="/about/">About</a ><a href="/contact/">Contact</a ><a href="/privacy/">Privacy Policy</a ></div></div></footer>
+<script>
+const editor=document.getElementById('jsonInput');const statusBox=document.getElementById('status');
+function status(message,type=''){statusBox.textContent=message;statusBox.className='tool-status'+(type?' '+type:'');}
+function parseInput(){const source=editor.value.trim();if(!source)throw new Error('Enter some JSON first.');return JSON.parse(source);}
+function formatJson(){try{editor.value=JSON.stringify(parseInput(),null,2);status('Valid JSON. Formatted with 2-space indentation.','success');}catch(e){status('Invalid JSON: '+e.message,'error');}}
+function minifyJson(){try{editor.value=JSON.stringify(parseInput());status('Valid JSON. Whitespace removed.','success');}catch(e){status('Invalid JSON: '+e.message,'error');}}
+function validateJson(){try{parseInput();status('Valid JSON. No syntax errors found.','success');}catch(e){status('Invalid JSON: '+e.message,'error');}}
+document.getElementById('formatBtn').addEventListener('click',formatJson);document.getElementById('minifyBtn').addEventListener('click',minifyJson);document.getElementById('validateBtn').addEventListener('click',validateJson);
+document.getElementById('copyBtn').addEventListener('click',async()=>{if(!editor.value){status('There is no output to copy.','error');return;}try{await navigator.clipboard.writeText(editor.value);status('Copied to clipboard.','success');}catch(e){editor.select();const ok=document.execCommand('copy');status(ok?'Copied to clipboard.':'Copy was blocked by the browser. Select the text and copy it manually.',ok?'success':'error');}});
+document.getElementById('sampleBtn').addEventListener('click',()=>{editor.value=JSON.stringify({name:'TinyToolbox',url:'https://tools.appforge.top',free:true,tools:['JSON Formatter','Timestamp Converter'],owner:{contact:'service@appforge.top'}},null,2);status('Example loaded.','success');});document.getElementById('clearBtn').addEventListener('click',()=>{editor.value='';status('Editor cleared.');editor.focus();});document.getElementById('year').textContent=new Date().getFullYear();
+</script></body></html>
