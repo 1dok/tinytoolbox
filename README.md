@@ -1,27 +1,16 @@
 # TinyToolbox
 
-Static website for `https://tools.appforge.top/`.
+Static multilingual website for `https://tools.appforge.top/`.
 
-## Contact
+## Languages
+- English (default): `/`
+- Simplified Chinese: `/zh-cn/`
+- Japanese: `/ja/`
 
-`service@appforge.top`
-
-## Structure
-
-- `index.html` — homepage
-- `tools/json-formatter/index.html` — JSON formatter, minifier and validator
-- `about/index.html` — about page
-- `contact/index.html` — contact page
-- `privacy/index.html` — privacy policy
-- `404.html` — not-found page
-- `robots.txt` and `sitemap.xml` — crawler instructions and URL index
-- `assets/style.css` — shared styles
-- `favicon.svg` — site icon
+Each language includes a home page, JSON formatter, About, Contact, and Privacy Policy pages. The JSON tool runs in the browser and does not intentionally upload input to the server.
 
 ## Cloudflare Pages
+Use the existing Pages project connected to this repository. Keep the build command empty and build output directory `.`. Commit these files to the production branch (`main`) to trigger deployment. Do not change the existing DNS records or unrelated `appforge.top` services.
 
-Connect this repository to Cloudflare Pages. Use the `main` production branch, Framework preset `None`, leave the build command empty, and set the build output directory to `.`. Once the `pages.dev` deployment has been tested, add `tools.appforge.top` under the project's **Custom domains** page. Do not change the existing `appforge.top` root-domain site or its unrelated DNS records.
-
-## Privacy note
-
-The JSON tool operates client-side and does not intentionally upload the entered JSON. The privacy policy should be revised if analytics, advertising, forms, or other third-party services are added.
+## Contact
+`service@appforge.top`
