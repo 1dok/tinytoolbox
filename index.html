@@ -23,6 +23,14 @@
   </div></section>
   <section class="value-band"><div class="container value-grid"><div><span class="value-symbol">◎</span><h3>Runs in your browser</h3><p>Tools are designed to process your input locally whenever practical.</p></div><div><span class="value-symbol">⚡</span><h3>Simple by design</h3><p>Focused interfaces, no unnecessary setup, and no account needed.</p></div><div><span class="value-symbol">↗</span><h3>Always improving</h3><p>More small utilities will be added as they are ready.</p></div></div></section>
 </main>
+<section class="container stats-panel" aria-label="Website statistics">
+  <div class="stats-item"><span class="stats-label">Today’s page views</span><strong class="stats-value" id="stats-today-pv">—</strong></div>
+  <div class="stats-item"><span class="stats-label">All-time page views</span><strong class="stats-value" id="stats-total-pv">—</strong></div>
+  <div class="stats-item"><span class="stats-label">Today’s unique visitors</span><strong class="stats-value" id="stats-today-uv">—</strong></div>
+  <div class="stats-item"><span class="stats-label">All-time unique visitors</span><strong class="stats-value" id="stats-total-uv">—</strong></div>
+  <p class="stats-note">Statistics are approximate; unique visitors use an anonymous browser ID.</p>
+</section>
 <footer class="site-footer"><div class="container footer-inner"><span>© <span id="year">2026</span> TinyToolbox</span><div class="footer-links"><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy Policy</a></div></div></footer>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="/assets/analytics.js" defer></script>
 </body></html>
